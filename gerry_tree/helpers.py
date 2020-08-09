@@ -12,6 +12,11 @@ import matplotlib.colors as mcolors
 from pathlib import Path
 from typing import List, Dict
 
+from typing import Dict
+def read_file(path: str) -> Dict:
+      return json.load(Path(path).open())
+
+
 def cleanup(DATA_DIR):
     block_data = pd.read_csv(f'{DATA_DIR}/small_final_attributes.csv')
     # {block group : {school: distance in seconds from block group to school}}

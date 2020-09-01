@@ -79,7 +79,7 @@ def make_map(new_dist,DATA_DIR):
             bg['new_dist'].loc[v] = int(k)
             bgs.append(v)
     bg['new_dist'] = bg['new_dist'].astype('category')
-    return bg.loc[bgs].plot(column='new_dist', categorical=True, cmap=mymap)
+    bg.loc[bgs].plot(column='new_dist', categorical=True, cmap=mymap)
 
 
 def make_graph(new_dist,G,block_data):
@@ -94,4 +94,4 @@ def make_graph(new_dist,G,block_data):
         G.nodes[school]["color"] = "#FF00FF"
         G.nodes[school]["size"] = 300
     display(nx.get_node_attributes(G, "color").values())
-    return nx.draw(G, node_color=list(nx.get_node_attributes(G, "color").values()), pos=block_data['POS'].loc[list(G.nodes())], node_size=list(nx.get_node_attributes(G, 'size').values()))
+    nx.draw(G, node_color=list(nx.get_node_attributes(G, "color").values()), pos=block_data['POS'].loc[list(G.nodes())], node_size=list(nx.get_node_attributes(G, 'size').values()))

@@ -40,10 +40,11 @@ def redistrict(DATA_DIR, steps=50, tree_loop=150, mino_coef=.5, buffer=0, random
         # trav_score -> total drive time for all students (max ensures that when time < buffer, the value is not negative)
         trav_score = sum([max([dist_dict[x][sch]-buffer, 0]) *
                       block_data['HS_POP'].loc[x] for x in district])
+        if type(dem_score) is None:
+            dem_score = 0 
         score = dem_multiplier*mino_coef*(dem_score) + (1-mino_coef)*trav_score
+        
         return (dem_score, trav_score, score)
-    
-    
     # {district: current scores}
     district_scores = {dist: _calc_score(dist, school_dict[dist]) for dist in schoollist}
     current_dem_score = np.round(sum([district_scores[u][0] for u in schoollist])/tot_pop,3)

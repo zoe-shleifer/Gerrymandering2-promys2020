@@ -80,7 +80,7 @@ def make_map(new_dist,DATA_DIR):
             bgs.append(v)
     bg['new_dist'] = bg['new_dist'].astype('category')
     bg.loc[bgs].plot(column='new_dist', categorical=True, cmap=mymap)
-
+    plt.show()
 
 def make_graph(new_dist,G,block_data):
     display(block_data['POS'])
